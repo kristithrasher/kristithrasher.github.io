@@ -65,18 +65,18 @@ function buildCharts(sample) {
     var result = resultArray[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var ids = result.otu_ids;
+    let ids = result.otu_ids;
     console.log(ids);
-    var labels = result.otu_labels.slice(0, 10).reverse();
+    let labels = result.otu_labels
     console.log(labels);
-    var values = result.sample_values.slice(0, 10).reverse();
+    let values = result.sample_values
     console.log(values);
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-    
-    var yticks = ids.map(sampleObj => "OTU" + sampleObj).slice(0, 10).reverse()
+
+    var yticks = ids.slice(0, 10).map(otuId => `OTU  ${otuId}`).reverse()
     console.log(yticks)
     // 8. Create the trace for the bar chart. 
     var barData = [
@@ -85,41 +85,45 @@ function buildCharts(sample) {
         x: values,
         text: labels,
         type: "bar",
-
         orientation: "h",
       }];
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Top 10 bacterial species (OTUs)"
+      title: `Top 10 bacterial species ${sample}`
     };
 
     // 10. Use Plotly to plot the data with the layout. 
-   Plotly.newPlot("bar", barData, barLayout)
+    Plotly.newPlot("bar", barData, barLayout)
+
+    //DELIVERABLE 2 BUBBLE CHART
+    // 1. Create the trace for the bubble chart.
+    var bubbleData = [{
+      x: ids,
+      y: values,
+      text: labels,
+      mode: 'markers',
+      marker: {
+        color: ids,
+        size: values,
+        colorscale: 'Picnic'
+      }   
+   
+    }];
+
+
+    var data = [bubbleData];
+
+    // // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+      title: `Bacteria Cultures Per Sample ${sample}`,
+      yaxis: { title: "Bacteria Count" },
+      xaxis: {title: "OTU ID"}
+     };
+
+    // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
   });
 
-//DELIVERABLE 2 BUBBLE CHART
-//create a bubble chart that will display the following when an
-// individual’s ID is selected from the dropdown menu webpage:
-// The otu_ids as the x-axis values.
-// The sample_values as the y-axis values.
-// The sample_values as the marker size.
-// The otu_ids as the marker colors.
-// The otu_labels as the hover-text values.
-   // 1. Create the trace for the bubble chart.
-   var bubbleData = [{
-   xaxis: ids,
-   yaxis: values, 
-   markers: values,
-   type: "bubble"
-   }];
+ //samples.json no longer available
 
-  // // 2. Create the layout for the bubble chart.
-  // var bubbleLayout = {
-  //   title: "Bacteria Cultures Per Sample",
-  //   xlabel: 
-  //   Ylabel: 
-  // };
-
-  // 3. Use Plotly to plot the data with the layout.
-  Plotly.newPlot("bubble", bubbleData); 
- }
+}
