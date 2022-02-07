@@ -75,7 +75,7 @@ function buildCharts(sample) {
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-
+    
     var yticks = ids.map(sampleObj => "OTU" + sampleObj).slice(0, 10).reverse()
     console.log(yticks)
     // 8. Create the trace for the bar chart. 
@@ -90,10 +90,36 @@ function buildCharts(sample) {
       }];
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Top 10 Bacteria Cultures Found"
+      title: "Top 10 bacterial species (OTUs)"
     };
 
     // 10. Use Plotly to plot the data with the layout. 
    Plotly.newPlot("bar", barData, barLayout)
   });
-}
+
+//DELIVERABLE 2 BUBBLE CHART
+//create a bubble chart that will display the following when an
+// individual’s ID is selected from the dropdown menu webpage:
+// The otu_ids as the x-axis values.
+// The sample_values as the y-axis values.
+// The sample_values as the marker size.
+// The otu_ids as the marker colors.
+// The otu_labels as the hover-text values.
+   // 1. Create the trace for the bubble chart.
+   var bubbleData = [{
+   xaxis: ids,
+   yaxis: values, 
+   markers: values,
+   type: "bubble"
+   }];
+
+  // // 2. Create the layout for the bubble chart.
+  // var bubbleLayout = {
+  //   title: "Bacteria Cultures Per Sample",
+  //   xlabel: 
+  //   Ylabel: 
+  // };
+
+  // 3. Use Plotly to plot the data with the layout.
+  Plotly.newPlot("bubble", bubbleData); 
+ }
