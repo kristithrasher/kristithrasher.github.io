@@ -80,12 +80,12 @@ function buildCharts(sample) {
     var yticks = ids.slice(0, 10).map(otuId => `OTU  ${otuId}`).reverse();
     console.log(yticks);
 
-    // 8. Create the trace for the bar chart.  
+    // 8. Create the trace for the bar chart. have to grab the top ten in desending order for valuels and labels too match there IDS.
     let barData = [
       {
         y: yticks,
-        x: values,
-        text: labels,
+        x: values.slice(0,10).reverse(),
+        text: labels.slice(0,10).reverse(),
         type: "bar",
         orientation: "h",
       }];
