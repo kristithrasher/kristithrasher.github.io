@@ -68,8 +68,10 @@ function buildCharts(sample) {
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
     let ids = result.otu_ids;
     console.log(ids);
+
     let labels = result.otu_labels
     console.log(labels);
+
     let values = result.sample_values
     console.log(values);
 
@@ -79,17 +81,21 @@ function buildCharts(sample) {
     // the back tik allows you to concatnate the string and the ids 
     var yticks = ids.slice(0, 10).map(otuId => `OTU  ${otuId}`).reverse();
     console.log(yticks);
+    console.log(values);
+    console.log(labels);
 
     // 8. Create the trace for the bar chart. have to grab the top ten in desending order for valuels and labels too match there IDS.
     let barData = [
       {
         y: yticks,
-        x: values.slice(0,10).reverse(),
-        text: labels.slice(0,10).reverse(),
+        x: values,
+        //x: values.slice(0,10).reverse(),
+        //text: labels.slice(0,10).reverse(),
+        text: values,
         type: "bar",
         orientation: "h",
       }];
-    
+     
     // 9. Create the layout for the bar chart. 
     // Also added the sample id number that was selected from drop down menu
     let barLayout = {
