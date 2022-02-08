@@ -4,8 +4,8 @@ function init() {
 
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
-    let sampleNames = data.names;
-    console.log(data)
+    var sampleNames = data.names;
+
     sampleNames.forEach((sample) => {
       selector
         .append("option")
@@ -24,11 +24,10 @@ function init() {
 init();
 
 function optionChanged(newSample) {
-
   // Fetch new data each time a new sample is selected
   buildMetadata(newSample);
   buildCharts(newSample);
-
+  
 }
 
 // Demographics Panel 
@@ -41,7 +40,7 @@ function buildMetadata(sample) {
     // Use d3 to select the panel with id of `#sample-metadata`
     var PANEL = d3.select("#sample-metadata");
 
-    // Use .html("") to clear any existing metadata
+    // Use `.html("") to clear any existing metadata
     PANEL.html("");
 
     // Use `Object.entries` to add each key and value pair to the panel
@@ -59,74 +58,30 @@ function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
-    let samples = data.samples;
+
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    let resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+
     //  5. Create a variable that holds the first sample in the array.
-    let result = resultArray[0];
+
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    let ids = result.otu_ids;
-    console.log(ids);
-    let labels = result.otu_labels
-    console.log(labels);
-    let values = result.sample_values
-    console.log(values);
+
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-    // the back tik allows you to concatnate the string and the ids 
-    var yticks = ids.slice(0, 10).map(otuId => `OTU  ${otuId}`).reverse();
-    console.log(yticks);
 
-    // 8. Create the trace for the bar chart.  
-    let barData = [
-      {
-        y: yticks,
-        x: values,
-        text: labels,
-        type: "bar",
-        orientation: "h",
-      }];
-    
+    var yticks = 
+
+    // 8. Create the trace for the bar chart. 
+    var barData = [
+      
+    ];
     // 9. Create the layout for the bar chart. 
-    // Also added the sample id number that was selected from drop down menu
-    let barLayout = {
-      title: `Top 10 Bacteria Species Found ${sample}`
+    var barLayout = {
+     
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", barData, barLayout)
-
-    //DELIVERABLE 2 BUBBLE CHART
-    // 1. Create the trace for the bubble chart. follow instructions from challenge instructions
-    let bubbleData = [{
-      x: ids,
-      y: values,
-      text: labels,
-      mode: 'markers',
-      marker: {
-        color: ids,
-        size: values,
-        colorscale: 'Picnic'
-      }
-
-    }];
     
-
-    // // 2. Create the layout for the bubble chart.
-    let bubbleLayout = {
-      title: `Bacteria Cultures Per Sample ${sample}`,
-      yaxis: { title: "Bacteria Count" },
-      xaxis: { title: "OTU ID" }
-    };
-
-    // 3. Use Plotly to plot the ata with the layout.
-    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
   });
-
-  // DELIVERABLE 3 CREATE THE GAUGE CHART
-
-
-  //samples.json no longer available
-};
+}
