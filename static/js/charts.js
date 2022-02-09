@@ -87,10 +87,9 @@ function buildCharts(sample) {
     // 8. Create the trace for the bar chart. have to grab the top ten in desending order for valuels and labels too match there IDS.
     let barData = [
       {
-        y: yticks,
-        x: values,
-        //x: values.slice(0,10).reverse(),
-        //text: labels.slice(0,10).reverse(),
+        
+        x: values.slice(0,10).reverse(),
+        text: labels.slice(0,10).reverse(),
         text: values,
         type: "bar",
         orientation: "h",
