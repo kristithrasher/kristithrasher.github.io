@@ -1,7 +1,7 @@
 body {
 
     color: #b34b4b;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
   }
  
  .tag {
@@ -10,7 +10,7 @@ body {
     }  
 
 .jumbotron {
-   background-image: url("../../images/th1.jfif");
+   background-image: url("../../images/bacteria.png");
     background-size: 100% 100%;
     text-align: center;
   }
