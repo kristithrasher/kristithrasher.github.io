@@ -1,7 +1,7 @@
 body {
 
-    color: #000000;
-    background-color: rgb(255, 255, 255);
+    color: #b34b4b;
+    background-color: white;
   }
  
  .tag {
@@ -10,6 +10,9 @@ body {
     }  
 
 .jumbotron {
+   background-image: url("../../images/th1.jfif");
     background-size: 100% 100%;
     text-align: center;
   }
+ 
+ 

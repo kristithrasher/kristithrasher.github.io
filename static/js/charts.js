@@ -93,8 +93,8 @@ function buildCharts(sample) {
     console.log(values);
 
     // Deliverable3 step 3
-    // 3. Create a variable that holds the washing frequency.
-    let wash = metaResult.wfreq;
+    // 3. Create a variable that holds the washing frequency. convert to floating point number
+    let wash = parseFloat(metaResult.wfreq);
     console.log(wash);
 
     // 7. Create the yticks for the bar chart.
@@ -167,8 +167,8 @@ function buildCharts(sample) {
           steps: [
             { range: [0, 2], color: "red" },
             { range: [2, 4], color: "orange" },
-            { range: [4, 6], color: "yello" },
-            { range: [6, 8], color: "blue" },
+            { range: [4, 6], color: "yellow" },
+            { range: [6, 8], color: "Lime" },
             { range: [8, 10], color: "green" },
           ],
 
@@ -180,7 +180,7 @@ function buildCharts(sample) {
     var gaugeLayout = {
       margin: { t: 25, r: 25, l: 25, b: 25 },
       paper_bgcolor: "white",
-      font: { color: "black", family: "Arial" }
+      font: { color: "black", family: "Times New Roman" }
     };
 
     // 6. Use Plotly to plot the gauge data and layout.

@@ -14,3 +14,7 @@ Used JavaScript, Plotly.js, D3.js,  HTML, Web Browser to complete a dashboard to
 *   When an individual Id is selected from the dropdown menu, the Gauge chart displays the weekly washing frequency;s value, and displays the value as a measure from 0-10 on the progress bar in the gauge chart 
 *   
 * A customized Dashboard
+* Added and background image to my jubotron in style.css file. 
+* Customized the font color.   
+* Added a paragraph to tell purpose of webpage.
+* Made the webpage mobile responsive by adding  <meta name="viewport" content="width=device-width, initial-scale=1.0"> to my index.html file. 
